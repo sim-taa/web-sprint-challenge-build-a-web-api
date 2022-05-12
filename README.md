@@ -18,8 +18,8 @@ In meeting the minimum viable product (MVP) specifications listed below, your pr
 
 ### Task 1: Project Set Up
 
-- [ ] Run `npm install` to install your dependencies.
-- [ ] Run tests locally executing `npm test`.
+- [√] Run `npm install` to install your dependencies.
+- [√] Run tests locally executing `npm test`.
 - [ ] Reset the database to its original state executing `npm run resetdb`.
 
 ### Task 2: Project Requirements (MVP)
@@ -137,10 +137,10 @@ We have provided test data for all the resources.
 
 ## Submission format
 
-- [ ] Submit via Codegrade by pushing commits to your `main` branch.
-- [ ] Check Codegrade before the deadline to compare its results against your local tests.
-- [ ] Check Codegrade on the days following the Sprint Challenge for reviewer feedback.
-- [ ] New commits will be evaluated by Codegrade if pushed _before_ the sprint challenge deadline.
+- [√] Submit via Codegrade by pushing commits to your `main` branch.
+- [√] Check Codegrade before the deadline to compare its results against your local tests.
+- [√] Check Codegrade on the days following the Sprint Challenge for reviewer feedback.
+- [√] New commits will be evaluated by Codegrade if pushed _before_ the sprint challenge deadline.
 
 ## Interview Questions
 
