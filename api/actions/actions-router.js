@@ -3,16 +3,23 @@ const express = require('express');
 
 const router = express.Router();
 
-/*1*/
+/*1*/router.get('/', (req, res) => {
+    res.json("message from actions router")
+})
+/*2*/router.get('/:id', (req, res) => {
 
-/*2*/
+})
+/*3*/router.post('/', (req, res) => {
 
-/*3*/
+})
+/*5*/router.delete('/:id', (req, res) => {
 
-/*4*/
+})
+/*4*/router.put('/:id', (req, res) => {
 
-/*5*/
+})
+/*6*/router.get('/:id/actions', (req, res) => {
 
-/*6*/
+})
 
 module.exports = router;

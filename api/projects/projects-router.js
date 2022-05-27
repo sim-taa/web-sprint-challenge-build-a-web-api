@@ -3,14 +3,26 @@ const express = require('express');
 
 const router = express.Router();
 
-/*1*/
+/*1*/router.get('/', (req, res) => {
+    res.json("message from projects router")
+})
+/*2*/router.get('/:id', (req, res) => {
 
-/*2*/
+})
 
-/*3*/
+// router.get('/api/projects', (req, res) => {
+//     res.json("cool projects")
 
-/*4*/
+// })
 
-/*5*/
+/*3*/router.post('/', (req, res) => {
+
+})
+/*5*/router.delete('/:id', (req, res) => {
+
+})
+/*4*/router.put('/:id', (req, res) => {
+
+    })
 
 module.exports = router;
