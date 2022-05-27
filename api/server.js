@@ -1,5 +1,7 @@
 const express = require('express');
 const res = require('express/lib/response');
+const actionsRouter = require('./actions/actions-router');
+const projectsRouter = require('./projects/projects-router');
 const server = express();
 
 // Configure your server here
@@ -8,7 +10,8 @@ const server = express();
 // Do NOT `server.listen()` inside this file!
 
 server.use(express.json());
-//const Actions = require('.api/actions/actions-model'); /*this line breaks nodemon*/
+server.use('/api/actions/actions-router.js', actionsRouter)
+server.use('/api/projects/projects-router.js', projectsRouter)
 server.use('*', (req,res) => {res.status(404).json({
     message:'not found'
 })
