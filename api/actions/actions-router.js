@@ -1,10 +1,20 @@
-// Write your "actions" router here!
 const express = require('express');
+const Action = require('./actions-model');
 
 const router = express.Router();
 
 /*1*/router.get('/', (req, res) => {
-    res.json("message from actions router")
+    Action.get()
+        .then(found => {
+            res.json(found);
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: "The actions information could not be retrived.",
+                err: err.message,
+                stack: err.stack,
+            })
+        })
 })
 /*2*/router.get('/:id', (req, res) => {
 

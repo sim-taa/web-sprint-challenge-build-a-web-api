@@ -1,10 +1,21 @@
 // Write your "projects" router here!
 const express = require('express');
+const Project = require('./projects-model');
 
 const router = express.Router();
 
 /*1*/router.get('/', (req, res) => {
-    res.json("message from projects router")
+    Project.get()
+        .then(found => {
+          res.json(found);
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: "The projects information could not be retrived.",
+                err: err.message,
+                stack: err.stack,
+            })
+        })
 })
 /*2*/router.get('/:id', (req, res) => {
 
