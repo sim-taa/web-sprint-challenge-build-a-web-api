@@ -3,7 +3,7 @@ const Action = require('./actions-model');
 
 const router = express.Router();
 
-/*1*/router.get('/', (req, res) => {
+/*1 done*/router.get('/', (req, res) => {
     Action.get()
         .then(found => {
             res.json(found);
