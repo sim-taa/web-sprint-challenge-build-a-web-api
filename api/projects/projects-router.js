@@ -3,11 +3,15 @@ const express = require("express");
 const { projectToBody } = require("../../data/helpers/mappers");
 const Projects = require("./projects-model");
 const colors = require("colors");
-const {newProjectPayloadValidation, checkIdExists} = require("./projects-middleware");
+const {
+  newProjectPayloadValidation,
+  checkIdExists,
+} = require("./projects-middleware");
 const { response } = require("express");
 const router = express.Router();
 
-/* TEST 1,2 DONE */ 
+/* TEST 1,2 DONE */
+
 router.get("/", (req, res) => {
   Projects.get()
     .then((found) => {
@@ -35,24 +39,33 @@ router.get("/:id", checkIdExists, async (req, res) => {
   }
 });
 
-/* TEST 5,6,7 DONE */ 
+/* TEST 5,6,7 DONE */
+
 router.post("/", newProjectPayloadValidation, async (req, res) => {
-try {
+  try {
     const project = req.body;
-    const newProject = await Projects.insert(project) 
-    res.status(201).json(newProject)   
-} catch (error) {
+    const newProject = await Projects.insert(project);
+    res.status(201).json(newProject);
+  } catch (error) {
     res.status(500).json({ message: "status 500" });
-}
+  }
 });
 
-/* TEST 11,12 */ 
+/* TEST 11,12 DONE */
+
 router.delete("/:id", checkIdExists, async (req, res) => {
-    await Projects.remove(req.params.id)
-    // res.status(204).end()
-    res.status(200).json({message: "your project was deleted"})
+  await Projects.remove(req.params.id);
+  // res.status(204).end()
+  res.status(200).json({
+    message: `your project ${req.project.name} was deleted`,
+  });
 });
 
-/*4*/ router.put("/:id", (req, res) => {});
+/* TEST 8,9,10 */
+
+router.put("/:id", checkIdExists, async (req, res) => {
+  const updatedProject = await Projects.update(req.params.id, req.body);
+  res.status(200).json(updatedProject);
+});
 
 module.exports = router;
