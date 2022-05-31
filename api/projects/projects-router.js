@@ -27,7 +27,7 @@ router.get("/", (req, res) => {
     });
 });
 
-/* TEST 3,4 */
+/* TEST 3,4 DONE */
 router.get("/:id", checkIdExists, async (req, res) => {
   try {
     res.status(200).json({
@@ -62,7 +62,7 @@ router.delete("/:id", checkIdExists, async (req, res) => {
   });
 });
 
-/* TEST 8,9,10 */
+/* TEST 8,9,10 DONE */
 
 router.put(
   "/:id",
@@ -74,7 +74,7 @@ router.put(
   }
 );
 
-/* TEST 13, 14 */
+/* TEST 13, 14 DONE */
 router.get("/:id/actions", checkIdExists, async (req, res) => {
   const foundAction = await Projects.getProjectActions(req.params.id);
   try {
