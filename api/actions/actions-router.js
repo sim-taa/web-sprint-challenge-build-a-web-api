@@ -1,7 +1,11 @@
 const express = require("express");
-const { checkActionIdExists } = require("../actions/actions-middlware");
+const {
+  checkActionIdExists,
+  newActionPayloadValidation,
+} = require("../actions/actions-middlware");
 const Action = require("./actions-model");
 const { response } = require("express");
+const { getProjectActions } = require("../projects/projects-model");
 const router = express.Router();
 
 /*  TEST 15,16 DONE */ router.get("/", (req, res) => {
@@ -31,7 +35,16 @@ router.get("/:id", checkActionIdExists, async (req, res) => {
   }
 });
 /* TEST 19, 20, 21 */
-router.post("/", (req, res) => {});
+router.post("/", newActionPayloadValidation, async (req, res) => {
+  try {
+    const action = req.body;
+    const newAction = await Action.insert(action);
+    res.status(201).json(newAction);
+  } catch (error) {
+    res.status(500).json({ message: "status 500" });
+  }
+});
+
 /* TEST 25,26 */
 router.delete("/:id", (req, res) => {});
 /* TEST 22,23,24 */
