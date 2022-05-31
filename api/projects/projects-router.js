@@ -5,6 +5,7 @@ const Projects = require("./projects-model");
 const colors = require("colors");
 const {
   newProjectPayloadValidation,
+  updateProjectPayloadValidation,
   checkIdExists,
 } = require("./projects-middleware");
 const { response } = require("express");
@@ -63,9 +64,14 @@ router.delete("/:id", checkIdExists, async (req, res) => {
 
 /* TEST 8,9,10 */
 
-router.put("/:id", checkIdExists, async (req, res) => {
-  const updatedProject = await Projects.update(req.params.id, req.body);
-  res.status(200).json(updatedProject);
-});
+router.put(
+  "/:id",
+  checkIdExists,
+  updateProjectPayloadValidation,
+  async (req, res) => {
+    const updatedProject = await Projects.update(req.params.id, req.body);
+    res.status(200).json(updatedProject);
+  }
+);
 
 module.exports = router;
