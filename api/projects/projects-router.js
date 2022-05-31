@@ -63,19 +63,9 @@ router.delete("/:id", checkIdExists, async (req, res) => {
 
 /* TEST 8,9,10 */
 
-router.put(
-  "/:id",
-  checkIdExists,
-  newProjectPayloadValidation,
-
-  async (req, res) => {
-    try {
-      const updatedProject = await Projects.update(req.params.id, req.body);
-      res.status(201).json(updatedProject);
-    } catch (error) {
-      res.status(500).json({ message: "status 500" });
-    }
-  }
-);
+router.put("/:id", checkIdExists, async (req, res) => {
+  const updatedProject = await Projects.update(req.params.id, req.body);
+  res.status(200).json(updatedProject);
+});
 
 module.exports = router;
