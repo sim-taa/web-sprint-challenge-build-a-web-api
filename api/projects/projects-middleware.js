@@ -1,6 +1,5 @@
 const Projects = require("./projects-model");
 
-// add middlewares here related to projects
 function newProjectPayloadValidation(req, res, next) {
   if (req.body.name && req.body.description) {
     next();

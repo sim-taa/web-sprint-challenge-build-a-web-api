@@ -67,7 +67,7 @@ Inside `api/actions/actions-router.js` build endpoints for performing CRUD opera
 
 - [√]TEST 15, 16 `[GET] /api/actions`
   - Returns an array of actions (or an empty array) as the body of the response.
-- [ ]TEST 17, 18 `[GET] /api/actions/:id`√
+- [√]TEST 17, 18 `[GET] /api/actions/:id`
   - Returns an action with the given `id` as the body of the response.
   - If there is no action with the given `id` it responds with a status code 404.
 - [ ]TEST 19, 20, 21 `[POST] /api/actions`

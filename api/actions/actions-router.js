@@ -1,6 +1,7 @@
 const express = require("express");
+const { checkActionIdExists } = require("../actions/actions-middlware");
 const Action = require("./actions-model");
-
+const { response } = require("express");
 const router = express.Router();
 
 /*  TEST 15,16 DONE */ router.get("/", (req, res) => {
@@ -16,8 +17,19 @@ const router = express.Router();
       });
     });
 });
-/* TEST 17, 18 */
-router.get("/:id", (req, res) => {});
+/* TEST 17, 18 DONE */
+router.get("/:id", checkActionIdExists, async (req, res) => {
+  try {
+    res.status(200).json({
+      project_id: req.action.project_id,
+      description: req.action.description,
+      notes: req.action.notes,
+      completed: req.action.completed,
+    });
+  } catch (error) {
+    res.status(500).json({ message: "status 500" });
+  }
+});
 /* TEST 19, 20, 21 */
 router.post("/", (req, res) => {});
 /* TEST 25,26 */
