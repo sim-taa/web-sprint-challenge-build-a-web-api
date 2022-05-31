@@ -74,4 +74,18 @@ router.put(
   }
 );
 
+/* TEST 13, 14 */
+router.get("/:id/actions", checkIdExists, async (req, res) => {
+  const foundAction = await Projects.getProjectActions(req.params.id);
+  try {
+    res.status(200).json(foundAction);
+  } catch (error) {
+    res.status(500).json({
+      message: "The actions information could not be retrived.",
+      err: err.message,
+      stack: err.stack,
+    });
+  }
+});
+
 module.exports = router;
